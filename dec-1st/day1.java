@@ -1,10 +1,13 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 class day1{
     public static void main(String[] args) {
         
-
-            String data = getData();
+          
+             String data = getData();
             StringTokenizer tokenizer = new StringTokenizer(data, "\n");
 
             int tokenCount = tokenizer.countTokens();
@@ -19,10 +22,26 @@ class day1{
 
                 for(int i = 0; i < stringArray.length; i++){
                    
-                    
+        
                     char[] validNums = {'0','1','2','3','4','5','6','7','8','9'};                    
                    ArrayList<Character> numsFound = new ArrayList<Character>();
                     String foo = stringArray[i];
+
+                    foo =foo.toLowerCase();
+                    foo = foo.replace("one", "o1e");
+                    foo = foo.replace("two", "t2o");
+                    foo = foo.replace("three", "thr3e");
+                    foo = foo.replace("four", "4");
+                    foo = foo.replace("five", "fi5e");                    
+                      foo = foo.replace("six", "s6x");
+                      foo = foo.replace("seven", "se7en");
+                      foo = foo.replace("eight", "ei8ht");
+                      foo = foo.replace("nine", "n9ne");
+                     
+                    
+                        System.out.println("foo" + foo);
+
+
                     for(int j = 0; j < foo.length(); j++){
                         for (char c : validNums) {
                             if (c == foo.charAt(j)){
@@ -31,6 +50,8 @@ class day1{
                         }
 
                     }
+
+                   
                     
                    char fizz[] = {numsFound.get(0), numsFound.get(numsFound.size() - 1)};
                    String str = new String(fizz);
@@ -44,9 +65,11 @@ class day1{
                     
                 }
                 System.out.println("Final Count: " + finalCount);
+               
+}
 
 
-    }
+    
 
     public static int combineNums(char firstNum, char lastNum){
         
